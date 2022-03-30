@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкеты</title>
+    <link rel="stylesheet" href="./style/daterangepicker.css">
+    <link rel="stylesheet" href="./style/select.css">
+    <link rel="stylesheet" href="./style/style.css?ver=1.0.1">
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="header-fix" class="header">
+            <nav class="navbar">
+                <a href="#" class="site-logo"><img src="./img/logo.svg" alt="logo"></a>
+                <div class="wrp-h">
+                    <div class="navbar-header">
+                        <button id="sidebarCollapse" class="navbar-btn">
+                            <span class="navbar-toggler-icon"></span>
+                            <span class="navbar-toggler-icon"></span>
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <div class="log-out-box">
+                        <div class="log-out__content">
+                            <div class="log-out__user-icon-wrapper">
+                                <img class="user-icon" src="./img/user-icon.jpg" alt="user">
+                            </div>
+                            <span class="log-out__user-name">Paityn Rosser</span>
+                            <i class="log-out-arrow"></i>
+                        </div>
+                        <div class="log-out__menu">
+                            Выйти
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <nav id="sidebar">
+            <div class="sidebar-nav">
+                <ul id="menu">
+                    <li>
+                        <a href="index.html">
+                            <i class="icon icon-compass"></i>
+                            Ключевые показатели
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="survey.html">
+                            <i class="icon icon-union"></i>
+                            Анкеты
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="content">
+            <div class="main-container">
+                <p class="page-name">
+                    <i class="home-icon"></i>
+                    <span class="page-name__gray-txt">Главная / Ключевые показатели /</span> Анкеты
+                </p>
+                <p class="page-name__big">Анкеты</p>
+                <div class="filters">
+                    <form action="" class="filters-form">
+                        <div class="filter-box">
+                            <h6>Регион</h6>
+                            <select id="region">
+                                <option value="Все">Все</option>
+                                <option value="Москва">Москва</option>
+                                <option value="Ростов">Ростов</option>
+                                <option value="Питер">Питер</option>
+                                <option value="Смоленск">Смоленск</option>
+                                <option value="Кипр">Кипр</option>
+                                <option value="Красноярск">Красноярск</option>
+                                <option value="Якутск">Якутск</option>
+                                <option value="Владивосток">Владивосток</option>
+                            </select>
+                        </div>
+                        <div class="filter-box">
+                            <h6>Город</h6>
+                            <select id="city">
+                                <option value="">Все</option>
+                                <option value="Москва">Москва</option>
+                                <option value="Ростов">Ростов</option>
+                                <option value="Питер">Питер</option>
+                                <option value="Смоленск">Смоленск</option>
+                                <option value="Кипр">Кипр</option>
+                                <option value="Красноярск">Красноярск</option>
+                                <option value="Якутск">Якутск</option>
+                                <option value="Владивосток">Владивосток</option>
+                            </select>
+                        </div>
+                        <div class="filter-box box-date">
+                            <h6>Период</h6>
+                            <input type="text" id="date" class="form-control" value="01-03-2022 - 24-03-2022">
+                        </div>
+                        <input type="submit" name="" id="form_send" style="display: none;">
+                        <script>
+                            // $('#date').on('change', () => {
+                            //     dpfunc();
+                            // })
+
+                            function dpfunc() {
+                                $('#form_send').click();
+                            }
+                        </script>
+                    </form>
+                </div>
+                <div class="table-container">
+                    <div class="table-box">
+                        <table cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>ID анкеты</th>
+                                    <th>Оценка</th>
+                                    <th>ФИО клиента</th>
+                                    <th>Номер телефона</th>
+                                    <th>Ceть</th>
+                                    <th>Город</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><i class="eye-icon"></i>297</td>
+                                    <td>10</td>
+                                    <td>Maren Vetrovs</td>
+                                    <td>77904014952</td>
+                                    <td>Кристофер</td>
+                                    <td>Тверь</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="eye-icon"></i>297</td>
+                                    <td>10</td>
+                                    <td>Jordyn Mango</td>
+                                    <td>77904014952</td>
+                                    <td>Карекс</td>
+                                    <td>Москва</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="eye-icon"></i>297</td>
+                                    <td>10</td>
+                                    <td>Charlie Workman</td>
+                                    <td>77904014952</td>
+                                    <td>Аврора</td>
+                                    <td>Казань</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="eye-icon"></i>297</td>
+                                    <td>10</td>
+                                    <td>Craig Workman</td>
+                                    <td>77904014952</td>
+                                    <td>Кристофер</td>
+                                    <td>Питер</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="eye-icon"></i>297</td>
+                                    <td>10</td>
+                                    <td>Emerson Lipshutz</td>
+                                    <td>77904014952</td>
+                                    <td>Карекс</td>
+                                    <td>Ростов</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="eye-icon"></i>297</td>
+                                    <td>10</td>
+                                    <td>Giana Schleifer</td>
+                                    <td>77904014952</td>
+                                    <td>Кристофер</td>
+                                    <td>Омск</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-separator"></div>
+                    <div class="download-box">
+                        <p class="download">Загрузить <i class="download-icon"></i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/menu.js"></script>
+    <script src="./js/select.js"></script>
+    <script src="./js/moment.js"></script>
+    <script type="text/javascript" src="./js/daterangepicker.js"></script>
+    <script>
+        jQuery(function ($) {
+            $(document).ready(function () {
+                $('.box-date input[type=text]').daterangepicker({
+                    opens: 'center',
+                    locale: {
+                        format: 'DD-MM-YYYY',
+                        applyLabel: 'Принять',
+                        cancelLabel: 'Отмена',
+                        invalidDateLabel: 'Выберите дату',
+                        daysOfWeek: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+                        monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+                            'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+                        ],
+                        firstDay: 1
+                    }
+                }, function (start, end, label) {});
+            });
+        });
+    </script>
+</body>
+
+</html>

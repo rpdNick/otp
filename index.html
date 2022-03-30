@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ключевые показатели</title>
+    <link rel="stylesheet" href="./style/daterangepicker.css">
+    <link rel="stylesheet" href="./style/select.css">
+    <link rel="stylesheet" href="./style/style.css?ver=1.0.1">
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.4.0/dist/chartjs-plugin-datalabels.min.js">
+    </script>
+    <div class="wrapper">
+        <div id="header-fix" class="header">
+            <nav class="navbar">
+                <a href="#" class="site-logo"><img src="./img/logo.svg" alt="logo"></a>
+                <div class="wrp-h">
+                    <div class="navbar-header">
+                        <button id="sidebarCollapse" class="navbar-btn">
+                            <span class="navbar-toggler-icon"></span>
+                            <span class="navbar-toggler-icon"></span>
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <div class="log-out-box">
+                        <div class="log-out__content">
+                            <div class="log-out__user-icon-wrapper">
+                                <img class="user-icon" src="./img/user-icon.jpg" alt="user">
+                            </div>
+                            <span class="log-out__user-name">Paityn Rosser</span>
+                            <i class="log-out-arrow"></i>
+                        </div>
+                        <div class="log-out__menu">
+                            Выйти
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <nav id="sidebar">
+            <div class="sidebar-nav">
+                <ul id="menu">
+                    <li class="active">
+                        <a href="index.html">
+                            <i class="icon icon-compass"></i>
+                            Ключевые показатели
+                        </a>
+                    </li>
+                    <li>
+                        <a href="survey.html">
+                            <i class="icon icon-union"></i>
+                            Анкеты
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="content">
+            <div class="main-container">
+                <p class="page-name">
+                    <i class="home-icon"></i>
+                    <span class="page-name__gray-txt">Главная /</span> Ключевые показатели
+                </p>
+                <p class="page-name__big">Ключевые показатели</p>
+                <div class="filters">
+                    <form action="" class="filters-form">
+                        <div class="filter-box">
+                            <h6>Регион</h6>
+                            <select id="region">
+                                <option value="Все">Все</option>
+                                <option value="Москва">Москва</option>
+                                <option value="Ростов">Ростов</option>
+                                <option value="Питер">Питер</option>
+                                <option value="Смоленск">Смоленск</option>
+                                <option value="Кипр">Кипр</option>
+                                <option value="Красноярск">Красноярск</option>
+                                <option value="Якутск">Якутск</option>
+                                <option value="Владивосток">Владивосток</option>
+                            </select>
+                        </div>
+                        <div class="filter-box">
+                            <h6>Город</h6>
+                            <select id="city">
+                                <option value="">Все</option>
+                                <option value="Москва">Москва</option>
+                                <option value="Ростов">Ростов</option>
+                                <option value="Питер">Питер</option>
+                                <option value="Смоленск">Смоленск</option>
+                                <option value="Кипр">Кипр</option>
+                                <option value="Красноярск">Красноярск</option>
+                                <option value="Якутск">Якутск</option>
+                                <option value="Владивосток">Владивосток</option>
+                            </select>
+                        </div>
+                        <div class="filter-box box-date">
+                            <h6>Период</h6>
+                            <input type="text" id="date" class="form-control" value="01-03-2022 - 24-03-2022">
+                        </div>
+                        <input type="submit" name="" id="form_send" style="display: none;">
+                        <script>
+                            // $('#date').on('change', () => {
+                            //     dpfunc();
+                            // })
+
+                            function dpfunc() {
+                                $('#form_send').click();
+                            }
+                        </script>
+                    </form>
+                </div>
+                <section class="all-charts-wrapper">
+                    <div class="charts-half">
+                        <h3 class="charts-half__title">Опрос по чату</h3>
+                        <div class="chart-main-container">
+                            <p class="chart-name">Оцените, насколько Вы были удовлетворены процессом внесения
+                                ежемесячного платежа по шкале от 1 до 10. </p>
+                            <div class="doughnuts-container">
+                                <div class="doughnuts-container_overwrapp">
+                                    <div class="doughnut-box all-poins">
+                                        <canvas id="chartCircle-1"></canvas>
+                                    </div>
+                                    <div class="separator"></div>
+                                    <div class="three-circles-box">
+                                        <div class="doughnut-box">
+                                            <canvas id="chartCircle-2"></canvas>
+                                        </div>
+                                        <div class="doughnut-box">
+                                            <canvas id="chartCircle-3"></canvas>
+                                        </div>
+                                        <div class="doughnut-box">
+                                            <canvas id="chartCircle-4"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="doughnuts-legend__wrapper">
+                                    <ul class="doughnuts-legend__list">
+                                        <li class="doughnuts-legend__item item_0-6">Оценка 0-6</li>
+                                        <li class="doughnuts-legend__item item_7-8">Оценка 7-8</li>
+                                        <li class="doughnuts-legend__item item_9-10">Оценка 9-10</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cards-section">
+                            <div class="cards-section__item-box">
+                                <div class="cards-section__item-icon-box">
+                                    <img class="cards-section__item-icon" src="./img/card-icon-orange.svg" alt="icon">
+                                </div>
+                                <div class="cards-section__item-data-box">
+                                    <p class="card-name">При оценке 0-6</p>
+                                    <p class="card-data-value">комментариев: <span class="comment-count">0</span></p>
+                                </div>
+                            </div>
+                            <div class="cards-section__item-box">
+                                <div class="cards-section__item-icon-box">
+                                    <img class="cards-section__item-icon" src="./img/card-icon-blue.svg" alt="icon">
+                                </div>
+                                <div class="cards-section__item-data-box">
+                                    <p class="card-name">При оценке 7-9</p>
+                                    <p class="card-data-value">комментариев: <span class="comment-count">100</span></p>
+                                </div>
+                            </div>
+                            <div class="cards-section__item-box">
+                                <div class="cards-section__item-icon-box">
+                                    <img class="cards-section__item-icon" src="./img/card-icon-green.svg" alt="icon">
+                                </div>
+                                <div class="cards-section__item-data-box">
+                                    <p class="card-name">При оценке 9-10</p>
+                                    <p class="card-data-value">комментариев: <span class="comment-count">0</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-main-container mt-20">
+                            <p class="chart-name">СТАТУС ДОСТАВКИ</p>
+                            <div class="chart-container">
+                                <div class="bar-chart-wrapper">
+                                    <div class="bar-chart-box bar-chart">
+                                        <div class="bar four-el-bar">
+                                            <div class="bar-bg">
+                                                <div class="bar-content green-bar-content">
+                                                    <!-- <div class="bar-tooltip">
+                                                        <p class="tooltip-count"><span class="count-val">72</span>шт</p>
+                                                    </div> -->
+                                                    <div class="bar-count-box">
+                                                        <span class="no-wrapp"><span class="bar-percentage"></span>
+                                                            /</span><span class="bar-count"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bar-name">Label</div>
+                                        </div>
+                                        <div class="bar four-el-bar">
+                                            <div class="bar-bg">
+                                                <div class="bar-content blue-bar-content">
+                                                    <!-- <div class="bar-tooltip">
+                                                        <p class="tooltip-count"><span class="count-val">72</span>шт</p>
+                                                    </div> -->
+                                                    <div class="bar-count-box">
+                                                        <span class="no-wrapp"><span class="bar-percentage"></span>
+                                                            /</span>
+                                                        <span class="bar-count"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bar-name">Label</div>
+                                        </div>
+                                        <div class="bar four-el-bar">
+                                            <div class="bar-bg">
+                                                <div class="bar-content orange-bar-content">
+                                                    <!-- <div class="bar-tooltip">
+                                                        <p class="tooltip-count"><span class="count-val">72</span>шт
+                                                        </p>
+                                                    </div> -->
+                                                    <div class="bar-count-box">
+                                                        <span class="no-wrapp"><span class="bar-percentage"></span>
+                                                            /</span>
+                                                        <span class="bar-count"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bar-name">Label</div>
+                                        </div>
+                                        <div class="bar four-el-bar">
+                                            <div class="bar-bg">
+                                                <div class="bar-content gray-bar-content">
+                                                    <!-- <div class="bar-tooltip">
+                                                        <p class="tooltip-count"><span class="count-val">72</span>шт</p>
+                                                    </div> -->
+                                                    <div class="bar-count-box">
+                                                        <span class="no-wrapp"><span class="bar-percentage"></span>
+                                                            /</span>
+                                                        <span class="bar-count"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bar-name">Label</div>
+                                        </div>
+                                        <div class="y-scale">
+                                            <div class="scale"><span class="y-scale-number">100 %</span></div>
+                                            <div class="scale hide"><span class="y-scale-number">90 %</span></div>
+                                            <div class="scale"><span class="y-scale-number">80 %</span></div>
+                                            <div class="scale hide"><span class="y-scale-number">70 %</span></div>
+                                            <div class="scale"><span class="y-scale-number">60 %</span></div>
+                                            <div class="scale hide"><span class="y-scale-number">50 %</span></div>
+                                            <div class="scale"><span class="y-scale-number">40 %</span></div>
+                                            <div class="scale hide"><span class="y-scale-number">30 %</span></div>
+                                            <div class="scale"><span class="y-scale-number">20 %</span></div>
+                                            <div class="scale hide"><span class="y-scale-number">10 %</span></div>
+                                            <div class="scale"><span class="y-scale-number"></span></div>
+                                        </div>
+                                    </div>
+                                    <script>
+                                        /*Bar data is here*/
+                                        let bar1VallArr = [300, 700, 970, 320];
+                                    </script>
+                                </div>
+                                <div class="separator"></div>
+                                <div class="bar-chart-legend-box">
+                                    <ul class="legend-list">
+                                        <li class="green">Отправлено</li>
+                                        <li class="blue">Доставлено</li>
+                                        <li class="orange">Заполнено</li>
+                                        <li class="gray">Перешли по ссылке</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="charts-half__line"></div>
+                    <div class="charts-half">
+                        <h3 class="charts-half__title mt-30">Опрос по продажам</h3>
+                        <div class="chart-main-container">
+                            <p class="chart-name">Оцените, насколько Вы были удовлетворены процессом внесения
+                                ежемесячного платежа по шкале от 1 до 10. </p>
+                            <div class="nested-doughnuts-box second-chart-box">
+                                <div class="nested-doughnuts-legend">
+                                    <ul class="legend-list">
+                                        <li class="green">Оценки 9-10</li>
+                                        <li class="blue">Оценки 7-8</li>
+                                        <li class="orange">Оценки 0-6</li>
+                                    </ul>
+                                </div>
+                                <div class="separator"></div>
+                                <div class="circle-container">
+                                    <div class="second-circle-chart">
+                                        <div class="circle-box big-circle">
+                                            <svg class="svg-box" id="svg" height="300" width="300">
+                                                <g class="chart2-circle1 circle-overwrap">
+                                                    <circle cx="153" cy="145" r="130" fill="transparent"
+                                                        data-circle="c-2-1" />
+                                                    <circle cx="153" cy="145" r="130" class="bar" id="chart2-circle1"
+                                                        data-circle="c-2-1" fill="transparent"
+                                                        stroke-dasharray="000 999" stroke-dashoffset="0" />
+                                                </g>
+                                                <g class="chart2-circle2 circle-overwrap" ;>
+                                                    <circle cx="153" cy="143" r="90" fill="transparent"
+                                                        data-circle="c-2-2" />
+                                                    <circle cx="153" cy="143" r="90" class="bar" id="chart2-circle2"
+                                                        fill="transparent" stroke-dasharray="000 999"
+                                                        stroke-dashoffset="0" data-circle="c-2-2" />
+                                                </g>
+
+                                                <g class="chart2-circle3 circle-overwrap">
+                                                    <circle cx="153" cy="144" r="45" fill="transparent"
+                                                        data-circle="c-2-3" />
+                                                    <circle cx="153" cy="144" r="45" class="bar" id="chart2-circle3"
+                                                        fill="transparent" stroke-dasharray="000 999"
+                                                        stroke-dashoffset="0" data-circle="c-2-3" />
+                                                </g>
+                                                <!-- <g class="tooltip">
+                                                    <path class="tooltip-drawing" d="M 0,0 
+                                                                L -10,-10 
+                                                                H -85
+                                                                Q -90,-10 -90,-15  
+                                                                V -65   
+                                                                Q -90,-70 -85,-70
+                                                                H 85
+                                                                Q 90,-70 90,-65
+                                                                V -15
+                                                                Q 90,-10 85,-10
+                                                                H 10 
+                                                                L 0,0 z" style="fill: #ECECEC; stroke: #ECECEC;">
+                                                    </path>
+                                                    <text class="tool-data" id="tooltip-percentage" text-anchor="middle"
+                                                        x="-25" y="-32">25%</text>
+                                                    <text class="tool-data" id="tooltip-count" text-anchor="middle"
+                                                        x="35" y="-32">
+                                                        50
+                                                        шт</text>
+                                                </g> -->
+                                            </svg>
+                                            <div class="doughnutTip">
+                                                <span class="doughnut-count"></span> / <span
+                                                    class="doughnut-percentage"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cards-section">
+                            <div class="cards-section__item-box">
+                                <div class="cards-section__item-icon-box">
+                                    <img class="cards-section__item-icon" src="./img/card-icon-orange.svg" alt="icon">
+                                </div>
+                                <div class="cards-section__item-data-box">
+                                    <p class="card-name">При оценке 0-6</p>
+                                    <p class="card-data-value">комментариев: <span class="comment-count">0</span></p>
+                                </div>
+                            </div>
+                            <div class="cards-section__item-box">
+                                <div class="cards-section__item-icon-box">
+                                    <img class="cards-section__item-icon" src="./img/card-icon-blue.svg" alt="icon">
+                                </div>
+                                <div class="cards-section__item-data-box">
+                                    <p class="card-name">При оценке 7-9</p>
+                                    <p class="card-data-value">комментариев: <span class="comment-count">100</span></p>
+                                </div>
+                            </div>
+                            <div class="cards-section__item-box">
+                                <div class="cards-section__item-icon-box">
+                                    <img class="cards-section__item-icon" src="./img/card-icon-green.svg" alt="icon">
+                                </div>
+                                <div class="cards-section__item-data-box">
+                                    <p class="card-name">При оценке 9-10</p>
+                                    <p class="card-data-value">комментариев: <span class="comment-count">0</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-main-container mt-20">
+                            <p class="chart-name">Статистика по рассылкам</p>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-legend">
+                                    <ul class="legend-list">
+                                        <li class="green">Отправлено</li>
+                                        <li class="blue">Доставлено</li>
+                                        <li class="orange">Перешли</li>
+                                        <li class="dark-green">Заполнили</li>
+                                    </ul>
+                                </div>
+                                <div class="separator"></div>
+                                <div class="progress-bar-box">
+                                    <div class="progress-wrapper">
+                                        <div class="percentage-count">
+                                            <span class="progress-percentage">25</span> / <span
+                                                class="progress-count">37</span>
+                                        </div>
+                                        <div class="progress-percentage-wrapper">
+                                            <div class="progress-loader-grey">
+                                                <div class="progress-loader-color green"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-wrapper">
+                                        <div class="percentage-count">
+                                            <span class="progress-percentage">25</span> / <span
+                                                class="progress-count">37</span>
+                                        </div>
+                                        <div class="progress-percentage-wrapper">
+                                            <div class="progress-loader-grey">
+                                                <div class="progress-loader-color blue"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-wrapper">
+                                        <div class="percentage-count">
+                                            <span class="progress-percentage">25</span> / <span
+                                                class="progress-count">37</span>
+                                        </div>
+                                        <div class="progress-percentage-wrapper">
+                                            <div class="progress-loader-grey">
+                                                <div class="progress-loader-color orange"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-wrapper">
+                                        <div class="percentage-count">
+                                            <span class="progress-percentage">25</span> / <span
+                                                class="progress-count">37</span>
+                                        </div>
+                                        <div class="progress-percentage-wrapper">
+                                            <div class="progress-loader-grey">
+                                                <div class="progress-loader-color dark-green"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script src="./js/menu.js"></script>
+    <script src="./js/select.js"></script>
+    <script src="./js/round-chart-corners.js"></script>
+    <script src="./js/moment.js"></script>
+    <script type="text/javascript" src="./js/daterangepicker.js"></script>
+    <script>
+        jQuery(function ($) {
+            $(document).ready(function () {
+                $('.box-date input[type=text]').daterangepicker({
+                    opens: 'center',
+                    locale: {
+                        format: 'DD-MM-YYYY',
+                        applyLabel: 'Принять',
+                        cancelLabel: 'Отмена',
+                        invalidDateLabel: 'Выберите дату',
+                        daysOfWeek: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+                        monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+                            'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+                        ],
+                        firstDay: 1
+                    }
+                }, function (start, end, label) {});
+            });
+        });
+
+        //data for chart
+        var circeleChartData1 = {
+            data: [{
+                    label: "Оценка 9-10",
+                    value: 100,
+                    backgroundColor: "#9DCC8F",
+
+                },
+                {
+                    label: "Оценка 7-8",
+                    value: 40,
+                    backgroundColor: "#A5C3D9",
+
+                },
+                {
+                    label: "Оценка 0-6",
+                    value: 20,
+                    backgroundColor: "#EAC15A",
+                }
+            ]
+        }
+        var Circle_1_CenterTxt = 9.5 + '%';
+
+
+        //data for chart
+        var circeleChartData2 = {
+            data: [{
+                    label: "",
+                    value: 120,
+                    backgroundColor: "#E3E8F1",
+
+                },
+                {
+                    label: "Оценка 7-8",
+                    value: 40,
+                    backgroundColor: "#A5C3D9",
+
+                },
+            ]
+        }
+        var Circle_2_CenterTxt = 25 + '%';
+
+        //data for chart
+        var circeleChartData3 = {
+            data: [{
+                    label: "",
+                    value: 60,
+                    backgroundColor: "#E3E8F1",
+
+                },
+                {
+                    label: "Оценка 9-10",
+                    value: 100,
+                    backgroundColor: "#9DCC8F",
+
+                },
+            ]
+        }
+        var Circle_3_CenterTxt = 61 + '%';
+
+        //data for chart
+        var circeleChartData4 = {
+            data: [{
+                    label: "",
+                    value: 140,
+                    backgroundColor: "#E3E8F1",
+
+                },
+                {
+                    label: "Оценка 0-6",
+                    value: 20,
+                    backgroundColor: "#EAC15A",
+
+                },
+            ]
+        }
+        var Circle_4_CenterTxt = 14 + '%';
+
+
+
+
+        (function () {
+            /**
+             * Корректировка округления десятичных дробей.
+             *
+             * @param {String}  type  Тип корректировки.
+             * @param {Number}  value Число.
+             * @param {Integer} exp   Показатель степени (десятичный логарифм основания корректировки).
+             * @returns {Number} Скорректированное значение.
+             */
+            function decimalAdjust(type, value, exp) {
+                // Если степень не определена, либо равна нулю...
+                if (typeof exp === 'undefined' || +exp === 0) {
+                    return Math[type](value);
+                }
+                value = +value;
+                exp = +exp;
+                // Если значение не является числом, либо степень не является целым числом...
+                if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
+                    return NaN;
+                }
+                // Сдвиг разрядов
+                value = value.toString().split('e');
+                value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
+                // Обратный сдвиг
+                value = value.toString().split('e');
+                return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+            }
+
+            // Десятичное округление к ближайшему
+            if (!Math.round10) {
+                Math.round10 = function (value, exp) {
+                    return decimalAdjust('round', value, exp);
+                };
+            }
+            // Десятичное округление вниз
+            if (!Math.floor10) {
+                Math.floor10 = function (value, exp) {
+                    return decimalAdjust('floor', value, exp);
+                };
+            }
+            // Десятичное округление вверх
+            if (!Math.ceil10) {
+                Math.ceil10 = function (value, exp) {
+                    return decimalAdjust('ceil', value, exp);
+                };
+            }
+        })();
+
+
+
+
+        /*** Nested Doughnuts data ***/
+
+        const nestedDoughnutsValues = [653, 853, 153];
+
+        let nestedDoughnutsSum = 0;
+        const nestedDoughnutsPercentage = [];
+        nestedDoughnutsValues.map((v, i) => {
+            nestedDoughnutsSum += v
+        });
+
+        //calculate percentage
+
+        for (let i = 0; i < nestedDoughnutsValues.length; i++) {
+            let percentage = Math.round((nestedDoughnutsValues[i] / nestedDoughnutsSum) * 100);
+            nestedDoughnutsPercentage.push(percentage);
+        }
+
+        let circleChart2Val1 = Math.round10(nestedDoughnutsPercentage[0]),
+            circleChart2Val2 = Math.round10(nestedDoughnutsPercentage[1]),
+            circleChart2Val3 = Math.round10(nestedDoughnutsPercentage[2])
+
+        /** Progress bars data */
+
+        let progressBarsData = [950, 524, 468, 280];
+    </script>
+    <script src="./js/charts.js"></script>
+</body>
+
+</html>
